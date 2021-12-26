@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs'); %>
+<body style=" background-color: #DCDCDC">
+  <%- include('partials/navbar.ejs'); %>
+  <div class="container">
+    <hr>
+    <h2 style="text-align: center;">Games</h2>
+    <hr>
+    <% game.forEach(game =>{ %>
+      
+          <div class="card" style="width: 15rem; margin-left: 1%; margin-bottom: 2%; display: inline-block;">
+              <img src="<%= game.img %>"   style="height: 12rem; width: 15rem;" class="img-fluid" alt="Imagem responsiva">
+              <div class="card-body">
+                  <h5 class="card-title"><%= game.name %></h5>
+                  <br>
+                  <a href="<%= game.links %>" class="btn btn-primary">Download</a>
+            </div>
+          </div>
+      
+    <% }) %>  
+    </div>
+</body>

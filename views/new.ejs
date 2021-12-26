@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs'); %>
+<body>
+    <hr>
+    <div class="container">
+        <h1>Adicionar um novo jogo</h1>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/games/new">
+                    <label>Nome do Jogo</label>
+                    <br>
+                    <input class="form-control" type="text" name="name" placeholder="Game">
+                    <br>
+                    <label>link para dowmload</label>
+                    <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="links"></textarea><br>
+                    <label>link para da img</label>
+                    <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="img"></textarea><br>
+                    <button class="btn btn-primary">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+<%- include ('partials/footer.ejs'); %>
