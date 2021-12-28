@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs'); %>
+<body style=" background-color: #DCDCDC">
+  <%- include('partials/navbar.ejs'); %>
+
+  <div class="container">
+    <div>
+        <br><br>
+        <img src="<%= game.img %>" style="float:left; width: 20rem; height: 20rem; margin-right: 3rem" alt="" class="scr">
+        <hr>
+        <h3><%= game.name %></h3>
+        <hr>
+        <a class="btn btn-success" style="display: inline-block" href="/games">Super Nintendo Games</a>
+        <a class="btn btn-success" style="display: inline-block" href="/emulador">Super Nintendo Emuladores</a>
+        <br><br>
+        <hr>
+        <a class="btn btn-success" href="<%= game.links %>">Donwload</a> 
+        
+    </div>
+
+
+</body>
+  <%- include ('partials/footer.ejs'); %>

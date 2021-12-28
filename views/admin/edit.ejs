@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs'); %>
+<body style=" background-color: #DCDCDC">
+    <hr>
+    <div class="container">
+        <h1>Editar um novo jogo</h1>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/admin/edit/save">
+                    <label>Novo Nome</label>
+                    <br>
+                    <input type="hidden" name="id"  value="<%= game.id %>" >
+                    <input class="form-control" type="text" name="name" value="<%= game.title %>" placeholder= "<%= game.title %>" >
+                    <br>
+                    <label>link para dowmload</label>
+                    <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" value="<%= game.links %>"   rows="3" name="links"  ></textarea><br>
+                    <label>link para da img</label>
+                    <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" value="<%= game.img %>" rows="3" name="img"></textarea><br>
+                    <button class="btn btn-primary">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+<%- include ('../partials/footer.ejs'); %>

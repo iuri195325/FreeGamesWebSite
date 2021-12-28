@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const gamesController = require('./controllers/gamesController');
-const emuladorController = require('./controllers/emuladorController');
+const gamesController = require('../controllers/gamesController');
+const emuladorController = require('../controllers/emuladorController');
 
-
+app.set('views', '../views');
 app.set('view engine','ejs');
 app.use(express.static('public'));
 
@@ -19,4 +19,6 @@ app.get('/', (req, res) =>{
 app.use('/', gamesController);
 app.use('/', emuladorController);
 
-app.listen(8181);
+app.listen(8181, () => {
+    console.log('servidor iniciado')
+});
