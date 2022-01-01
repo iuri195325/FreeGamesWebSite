@@ -7,7 +7,7 @@
       <hr>
       <% game.forEach(game =>{ %>
         <% if (game.id <= 12) { %>
-            <div class="card" style="width: 15rem; margin-left: 1%; margin-bottom: 2%; display: inline-block;">
+            <div class="card" style="width: 15rem; margin-left: 1%; margin-bottom: 2%; display: inline-block; border: 1px solid #A9A9A9; border-radius: 12px; box-shadow: 0 0 2px 2px #A9A9A9;">
                 <img src="<%= game.img %>"   style="height: 12rem; width: 15rem;" class="img-fluid" alt="Imagem responsiva">
                 <div class="card-body">
                     <h5 class="card-title"><%= game.name %></h5>

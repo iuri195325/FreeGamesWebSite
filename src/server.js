@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const gamesController = require('../controllers/gamesController');
 const emuladorController = require('../controllers/emuladorController');
+const categorysController = require('../controllers/categorysController');
 
 app.set('views', '../views');
 app.set('view engine','ejs');
@@ -18,7 +19,8 @@ app.get('/', (req, res) =>{
 
 app.use('/', gamesController);
 app.use('/', emuladorController);
+app.use('/', categorysController);
 
 app.listen(8181, () => {
-    console.log('servidor iniciado')
+    console.log('servidor iniciado');
 });

@@ -3,8 +3,8 @@
     <%- include('../partials/navbar.ejs'); %>
     <div class="container">
         <hr>
-        <h2>Jogos</h2>
-        <a class="btn btn-success" href="/game/new">Adicionar novos jogos</a>
+        <h2>Categorias</h2>
+        <a class="btn btn-success" href="/new/category">Adicionar Nova Categoria</a>
         <a class="btn btn-success" href="/home">Pagina inicial</a> 
         <hr>
         <table class="table table-bordered">
@@ -13,14 +13,14 @@
                 <th>Nome</th>
                 <th>ações</th>
             </tr>
-            <% game.forEach(game =>{ %>
+            <% category.forEach(category =>{ %>
                 <tr>    
-                    <th><%= game.id %></th>
-                    <th><%= game.name %></th>
+                    <th><%= category.id %></th>
+                    <th><%= category.title %></th>
                     <th> 
-                        <a class="btn btn-warning" href="/admin/edit/<%= game.id %>">Editar</a> 
-                        <form method="POST" action="/admin/game/delete" style="display: inline">
-                            <input type="hidden" name="id" value="<%= game.id %>">
+                        <a class="btn btn-warning" href="/admin/edit/<%= category.id %>">Editar</a> 
+                        <form method="POST" action="/admin/category/delete" style="display: inline">
+                            <input type="hidden" name="id" value="<%= category.id %>">
                             <button class="btn btn-danger">Excluir</button>          
                         </form>    
                     </th>

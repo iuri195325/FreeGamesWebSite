@@ -17,6 +17,13 @@
                     <label>link para da img</label>
                     <br>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="img"></textarea><br>
+                    <br>
+                    <select  class="form-control" name="category">
+                        <% category.forEach((category)=>{ %>
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <% }) %>
+                    </select>
+                    <br>
                     <button class="btn btn-primary">Adicionar</button>
                 </form>
             </div>

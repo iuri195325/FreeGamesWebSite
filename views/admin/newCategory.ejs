@@ -1,0 +1,20 @@
+<%- include('../partials/header.ejs'); %>
+<body style=" background-color: #DCDCDC">
+    <hr>
+    <div class="container">
+        <h1>Adicionar uma Nova Categoria</h1>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/categrys/new">
+                    <label>Nome da Categoria</label>
+                    <br>
+                    <input class="form-control" type="text" name="title" placeholder="Categoria">
+                    <br>
+                    <button class="btn btn-primary">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</body>
+<%- include ('../partials/footer.ejs'); %>

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Games = require('../controllers/games');
+const Category = require('../controllers/categorys');
 
 //pagina inicial
 
@@ -30,7 +31,10 @@ router.get("/games/download/:id", (req, res) => {
 
 //pagina para adicionar novo game
 router.get("/game/new", (req, res) =>{
-    res.render('admin/new');
+    Category.findAll().then(category =>{
+        res.render('admin/new',{category: category});
+    })
+    
 });
 
 //pagina de Admin
@@ -75,7 +79,7 @@ router.post('/admin/edit/save', (req, res) => {
 }); */
 
 
-router.post("/admin/category/delete", (req, res) =>{
+router.post("/admin/game/delete", (req, res) =>{
     var id = req.body.id;
     if(id != undefined){
         Games.destroy({
@@ -91,11 +95,12 @@ router.post("/games/new", (req, res) =>{
     var name = req.body.name;
     var links = req.body.links;
     var img = req.body.img;
-
+    var category = req.body.id;
     Games.create({
         name: name,
         links: links,
-        img: img
+        img: img,
+        CategoryId: category
     }).then(() =>{
         res.redirect('/admin/games');
     })
