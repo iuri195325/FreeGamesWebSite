@@ -1,20 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const Games = require('../controllers/games');
-const Category = require('../controllers/categorys');
+const Games = require('../gamesController/games');
+const Category = require('../categoryController/categorys');
 
 //pagina inicial
 
 router.get("/home", (req, res) => {
     Games.findAll().then((game) => {
-        res.render("index", {game: game});
+        res.render("app/index", {game: game});
     });
 });
 
 //pagina com todos games
 router.get("/games", (req, res) => {
-    Games.findAll().then((game) => {
-        res.render("games", {game: game});
+    Games.findAll({
+        include: [{model: Category}]
+    }).then((game) => {
+        res.render("app/games", {game: game});
     });
 });
 
@@ -22,7 +24,7 @@ router.get("/games/download/:id", (req, res) => {
     var id = req.params.id;
     
     Games.findOne({where: {id: id}}).then((game) => {
-        res.render("download", {game: game});
+        res.render("app/download", {game: game});
     });
 });
 
@@ -32,7 +34,7 @@ router.get("/games/download/:id", (req, res) => {
 //pagina para adicionar novo game
 router.get("/game/new", (req, res) =>{
     Category.findAll().then(category =>{
-        res.render('admin/new',{category: category});
+        res.render('admin/gamesAdmin/new',{category: category});
     })
     
 });
@@ -40,7 +42,7 @@ router.get("/game/new", (req, res) =>{
 //pagina de Admin
 router.get("/admin/games", (req, res) =>{
     Games.findAll().then((game) => {
-        res.render("admin/admin", {game: game});
+        res.render("admin/gamesAdmin/admin", {game: game});
     });
 })
 
@@ -48,7 +50,7 @@ router.get('/admin/edit/:id', (req, res) => {
     var id = req.params.id;
     Games.findOne({where: {id: id}}).then((game) => {
         if(game != undefined){
-            res.render("admin/edit", {game: game});
+            res.render("admin/gamesAdmin/edit", {game: game});
         }else{
             res.send(404);
         }
@@ -95,7 +97,7 @@ router.post("/games/new", (req, res) =>{
     var name = req.body.name;
     var links = req.body.links;
     var img = req.body.img;
-    var category = req.body.id;
+    var category = req.body.category;
     Games.create({
         name: name,
         links: links,

@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const gamesController = require('../controllers/gamesController');
-const emuladorController = require('../controllers/emuladorController');
-const categorysController = require('../controllers/categorysController');
+const gamesController = require('../controllers/gamesController/gamesController');
+const emuladorController = require('../controllers/emuladorController/emuladorController');
+const categorysController = require('../controllers/categoryController/categorysController');
+const Categorys = require('../controllers/categoryController/categorys');
+const Games = require('../controllers/gamesController/games');
 
 app.set('views', '../views');
 app.set('view engine','ejs');

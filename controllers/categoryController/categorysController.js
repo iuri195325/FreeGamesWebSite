@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../controllers/categorys');
+const Category = require('../categoryController/categorys');
+const Games = require('../gamesController/games')
 
 router.get('/categorys', (req, res) => {
     Category.findAll().then(category =>{
-        res.render('admin/adminCategory',{category: category});
+        res.render('admin/categoryAdmin/adminCategory',{category: category});
     })
 });
 
 router.get('/new/category', (req, res) => {
-    res.render('admin/newCategory');
+    res.render('admin/categoryAdmin/newCategory');
 });
 
 router.post('/categrys/new', (req, res) => {

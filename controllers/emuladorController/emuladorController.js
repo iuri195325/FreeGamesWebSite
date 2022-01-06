@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 router.get('/emulador', (req, res) => {
-    res.render('emulador');
+    res.render('app/emulador');
 })
 
 

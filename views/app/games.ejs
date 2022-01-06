@@ -1,6 +1,6 @@
-<%- include('partials/header.ejs'); %>
+<%- include('../partials/header.ejs'); %>
 <body style=" background-color: #DCDCDC">
-  <%- include('partials/navbar.ejs'); %>
+  <%- include('../partials/navbar.ejs'); %>
   
     <hr>
     <h2 style="text-align: center;">Games</h2>
@@ -24,10 +24,10 @@
       <h3>Categorias</h3>
       <br>
       <hr>
-      <h5>Aventura</h5>
-      <h5>Ação</h5>
-      <h5>FPS</h5>
-      <h5>RPG</h5>
-      <h5>Corrida</h5>
+      <% game.forEach(game =>{ %>
+
+        <h5><%= game.Category.title %></h5>
+
+      <% }) %>
     </div>
 </body>
