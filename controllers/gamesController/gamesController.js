@@ -7,25 +7,46 @@ const Category = require('../categoryController/categorys');
 
 router.get("/home", (req, res) => {
     Games.findAll().then((game) => {
-        res.render("app/index", {game: game});
-    });
+        Category.findAll().then(category=> {
+            res.render("app/index", {game: game, category: category});
+       });
+    })
 });
 
 //pagina com todos games
 router.get("/games", (req, res) => {
-    Games.findAll({
-        include: [{model: Category}]
-    }).then((game) => {
-        res.render("app/games", {game: game});
-    });
+    Games.findAll().then((game) => {
+        Category.findAll().then(category=> {
+            res.render("app/index", {game: game, category: category});
+       });
+    })
 });
 
 router.get("/games/download/:id", (req, res) => {
     var id = req.params.id;
     
     Games.findOne({where: {id: id}}).then((game) => {
-        res.render("app/download", {game: game});
+        Category.findAll().then(category => {
+            res.render("app/download", {game: game, category: category});
+        })
+        
     });
+});
+
+router.get('/games/category/:id', (req, res) => {
+    var id = req.params.id;
+    Category.findOne({
+        where: { id: id },
+        include: [{model: Games}]
+    }).then(category => {
+        if(category != undefined){
+           Category.findAll().then(categorys => {
+               res.render('app/gamesCategory', { games: category.Games, category: categorys });
+           });
+        }else{
+            res.send("deu erro mano kk");
+        }
+    })
 });
 
 

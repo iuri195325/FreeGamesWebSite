@@ -5,12 +5,12 @@
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Aventura</a></li>
-          <li><a class="dropdown-item" href="#">Ação</a></li>
-          <li><a class="dropdown-item" href="#">RPG</a></li>
-          <li><a class="dropdown-item" href="#">FPS</a></li>
-      </ul>
+      
+        <ul class="dropdown-menu">
+          <% category.forEach(category =>{ %>
+            <li><a class="dropdown-item" href="/games/category/<%= category.id %>"><%= category.title  %></a></li>
+            <% }) %>
+        </ul>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/emulador">Emulador</a>
